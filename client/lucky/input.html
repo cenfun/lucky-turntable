@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>抽奖</title>
+    <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body style="padding: 10%;">
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">
+            <h5>姓名：</h5>
+        </label>
+        <input type="text" class="form-control name-value" id="exampleFormControlInput1" />
+    </div>
+    <div>
+        <button type="button" class="btn btn-primary name-submit">提交</button>
+    </div>
+    <div class="alert alert-success" style="margin-top: 20px;display: none;" role="alert">
+        添加成功
+    </div>
+    <div class="alert alert-danger" style="margin-top: 20px;display: none;" role="alert">
+        提交失败
+      </div>
+    <script>
+        const $name = document.querySelector('.name-value');
+        const $submit = document.querySelector('.name-submit');
+        const $danger = document.querySelector('.alert-danger');
+        const $success = document.querySelector('.alert-success');
+
+        $submit.addEventListener('click', function(e) {
+
+            $danger.style.display = 'none';
+            $success.style.display = 'none';
+            const v = $name.value;
+
+            if (!v) {
+                $name.focus();
+                return;
+            }
+            $name.setAttribute('disabled', 'disabled');
+            $submit.setAttribute('disabled', 'disabled');
+
+            console.log(v);
+            window.fetch(`/add?name=${v}`).then(function(response) {
+                return response.json();
+            }, function() {
+                $danger.style.display = 'block';
+                $name.removeAttribute('disabled');
+                $submit.removeAttribute('disabled');
+            }).then(function(data) {
+                console.log(data);
+                if (!data) {
+                    return;
+                }
+                $success.style.display = 'block';
+                $submit.style.display = 'none';
+            });
+
+        });
+
+    </script>
+
+</body>
+ </html>

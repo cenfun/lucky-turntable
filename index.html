@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>幸运转盘</title>
+
+	<link rel="stylesheet" href="node_modules/reveal.js/dist/reset.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/dist/theme/black.css">
+	<link rel="stylesheet" href="node_modules/reveal.js/plugin/highlight/monokai.css">
+
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="client/cover.jpg" data-background-opacity="0.5">
+
+				<h3 style="text-shadow: #000 1px 0 1px; font-weight: normal;">PPT 标题</h3>
+				<small>XXX - 2022/7/8</small>
+			</section>
+
+			<section>
+				<h5>抽奖</h5>
+			</section>
+
+			<section>
+				<div class="lucky">
+					<div class="lucky-main">
+						<canvas class="lucky-starts-canvas"></canvas>
+						<div class="lucky-container"></div>
+					</div>
+					<div class="lucky-toolbar">
+						<div class="lucky-qrcode">
+							<canvas class="lucky-qrcode-canvas"></canvas>
+							<div class="lucky-qrcode-url"></div>
+						</div>
+
+						<div class="lucky-start">
+							<button class="lucky-start-button">开始</button>
+						</div>
+
+						<div class="lucky-menu">
+							<div class="lucky-popover">
+								<div class="lucky-add">
+									<input type="text" class="lucky-add-name" placeholder="名称" />
+									<button class="lucky-add-button">添加</button>
+								</div>
+								<div class="lucky-empty">
+									<button class="lucky-empty-button">清空</button>
+									<label for="lucky-empty-checkbox">
+										<input id="lucky-empty-checkbox" type="checkbox" />确定清空
+									</label>
+								</div>
+							</div>
+							<div class="lucky-menu-open">
+								<img src="client/lucky/list.svg" width="32" />
+							</div>
+						</div>
+
+					</div>
+				</div>
+				
+			</section>
+
+			<section>
+				<h3>Q&A</h3>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="node_modules/reveal.js/dist/reveal.js"></script>
+	<script src="node_modules/reveal.js/plugin/notes/notes.js"></script>
+	<script src="node_modules/reveal.js/plugin/markdown/markdown.js"></script>
+	<script src="node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+
+
+	<script src="node_modules/axios/dist/axios.js"></script>
+	<script src="node_modules/qrcode/build/qrcode.js"></script>
+	<script src="node_modules/socket.io/client-dist/socket.io.min.js"></script>
+
+    <script src="node_modules/@tweenjs/tween.js/dist/tween.umd.js"></script>
+	
+	<script src="client/lucky/lucky-star.js"></script>
+    <script src="client/lucky/lucky.js"></script>
+	<link rel="stylesheet" href="client/lucky/lucky.css" />
+
+
+	<script>
+		const onSlide = function(event) {
+
+		    window.luckyStart(event.currentSlide);
+
+		};
+
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		window.Reveal.initialize({
+
+		    hash: true,
+
+		    // Learn about plugins: https://revealjs.com/plugins/
+		    plugins: [window.RevealMarkdown, window.RevealHighlight, window.RevealNotes]
+		});
+
+		window.Reveal.on('slidechanged', function(event) {
+		    // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+		    onSlide(event);
+		});
+
+		window.Reveal.on('ready', function(event) {
+		    // event.currentSlide, event.indexh, event.indexv
+		    //onSlide(event);
+		});
+
+	</script>
+	
+</body>
+
+</html>

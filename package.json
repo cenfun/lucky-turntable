@@ -1,0 +1,35 @@
+{
+    "name": "lucky-turntable",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server/index.js",
+    "scripts": {
+        "start": "node ./server/index.js"
+    },
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "@koa/router": "^11.0.1",
+        "@tweenjs/tween.js": "^18.6.4",
+        "axios": "^0.27.2",
+        "bootstrap": "^5.1.3",
+        "eight-colors": "^1.0.1",
+        "koa": "^2.13.4",
+        "koa-static-resolver": "^1.0.4",
+        "open": "^8.4.0",
+        "qrcode": "^1.5.0",
+        "reveal.js": "^4.3.1",
+        "socket.io": "^4.5.1"
+    },
+    "devDependencies": {
+        "eslint": "^8.19.0",
+        "eslint-config-plus": "^1.0.3",
+        "eslint-plugin-html": "^6.2.0",
+        "postcss": "^8.4.14",
+        "postcss-html": "^1.5.0",
+        "postcss-scss": "^4.0.4",
+        "stylelint": "^14.9.1",
+        "stylelint-config-recommended": "^8.0.0",
+        "stylelint-config-standard": "^26.0.0"
+    }
+}
