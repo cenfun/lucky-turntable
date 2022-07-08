@@ -1,5 +1,5 @@
 # lucky-turntable
-lucky turntable
+lucky turntable based on reveal.js, support qrcode
 
 
 ## Usage
